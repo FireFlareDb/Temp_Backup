@@ -1,0 +1,19 @@
+Consider marksoop.csv
+........................
+Total of Each student, calcualte grades. 
+Convert Comprehensive marks out of 40
+Line chart (Mid term-I on x axis, Mid Term II on y-axis)
+Create histogram for marks of Total Marks(use bin size=10)
+Create bar chart (on x axis- Grade Labels, On y-axis frequency of students scoring respective grade)
+Create pie chart representing all grades.
+On x-axis, required is names of students, y-axis represents total marks scored by student.
+On X-axis, required is student name, y-axis represent marks by that student in each component(percentage wise).
+
+Consider marksos.csv
+
+
+On X-axis should be name of both courses, on y- axis should be frequncy of grades (multiple bars)
+On X-axis should be name of students given as a list, on yaxis should be marks scored by them in both courses(multiple horizontal bars)
+
+Note: Use pd.merge() to merge both dataframes, common column is rollno. 
+

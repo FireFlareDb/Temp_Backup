@@ -1,0 +1,163 @@
+,0,1
+Python,17582,3877
+R,4072,1145
+SQL,8449,2101
+C,3633,991
+C++,4465,972
+Java,3691,975
+Javascript,3563,677
+Julia,268,24
+Swift,204,26
+Bash,1909,220
+"Jupyter (JupyterLab, Jupyter Notebooks, etc)",4527,847
+RStudio,3627,1053
+Visual Studio,3284,756
+Visual Studio Code (VSCode),8379,1476
+PyCharm,6071,1238
+Spyder,3038,686
+Notepad++,3077,784
+Sublime Text,2279,485
+Vim / Emacs,1439,147
+Jupyter Notebook,12931,3024
+Kaggle Notebooks,7726,1633
+Colab Notebooks,7956,1662
+Azure Notebooks,857,187
+Paperspace / Gradient,171,33
+Binder / JupyterHub,1413,320
+Code Ocean,143,28
+IBM Watson Studio,819,226
+Amazon Sagemaker Studio Notebooks,620,114
+Amazon EMR Notebooks,277,63
+Google Cloud Notebooks (AI Platform / Vertex AI),1642,370
+Google Cloud Datalab,1421,345
+Databricks Collaborative Notebooks,484,93
+Zeppelin / Zepl Notebooks,202,40
+Deepnote Notebooks,226,30
+Observable Notebooks,117,27
+NVIDIA GPUs,6944,932
+Google Cloud TPUs,2775,615
+AWS Trainium Chips,316,89
+AWS Inferentia Chips,329,74
+Matplotlib,14327,2974
+Seaborn,10243,2141
+Plotly / Plotly Express,4657,1009
+Ggplot / ggplot2,3912,1080
+Shiny,1037,254
+D3 js,806,131
+Altair,262,39
+Bokeh,890,131
+Geoplotlib,897,227
+Leaflet / Folium,586,113
+learn,11454,2303
+TensorFlow,7844,1374
+Keras,6679,1170
+PyTorch,5150,805
+Fast.ai,701,99
+MXNet,219,30
+Xgboost,5031,846
+LightGBM,2305,279
+CatBoost,1325,157
+Prophet,684,105
+H2O 3,419,55
+Caret,826,164
+Tidymodels,549,118
+JAX,152,26
+PyTorch Lightning,900,141
+Huggingface,992,102
+Linear or Logistic Regression,11221,2397
+Decision Trees or Random Forests,9584,2082
+"Gradient Boosting Machines (xgboost, lightgbm, etc)",6390,1048
+Bayesian Approaches,3528,775
+Evolutionary Approaches,805,131
+"Dense Neural Networks (MLPs, etc)",3922,471
+Convolutional Neural Networks,6238,1033
+Generative Adversarial Networks,1174,152
+Recurrent Neural Networks,3559,594
+"General purpose image/video tools (PIL, cv2, skimage, etc)",2300,309
+"Object detection methods (YOLOv3, RetinaNet, etc)",2382,290
+"Image classification and other general purpose networks (VGG, Inception, ResNet, ResNeXt, NASNet, EfficientNet, etc)",3744,557
+"Generative Networks (GAN, VAE, etc)",1293,169
+"Word embeddings/vectors (GLoVe, fastText, word2vec)",2253,336
+"decorder models (seq2seq, vanilla transformers)",1743,238
+"Contextualized embeddings (ELMo, CoVe)",630,105
+Amazon Web Services (AWS),3195,437
+Microsoft Azure,2097,310
+Google Cloud Platform (GCP),2690,393
+IBM Cloud / Red Hat,461,99
+Oracle Cloud,374,68
+SAP Cloud,244,41
+Salesforce Cloud,215,52
+VMware Cloud,311,69
+Alibaba Cloud,231,22
+Tencent Cloud,149,16
+Amazon Elastic Compute Cloud (EC2),1982,228
+Microsoft Azure Virtual Machines,1298,170
+Google Cloud Compute Engine,1688,232
+Microsoft Azure Data Lake Storage,785,103
+Microsoft Azure Disk Storage,751,79
+Amazon Simple Storage Service (S3),1997,248
+Amazon Elastic File System (EFS),602,62
+Google Cloud Storage (GCS),1652,263
+Google Cloud Filestore,643,112
+Amazon SageMaker,864,109
+Azure Machine Learning Studio,810,119
+Google Cloud Vertex AI,608,94
+DataRobot,275,47
+Databricks,704,98
+Dataiku,172,23
+Rapidminer,252,35
+MySQL,2988,519
+PostgreSQL,1964,246
+SQLite,1422,172
+Oracle Database,908,181
+MongoDB,1422,190
+Snowflake,411,69
+IBM Db2,296,51
+Microsoft SQL Server,1616,256
+Microsoft Azure SQL Database,658,101
+Microsoft Azure Cosmos DB,324,40
+Amazon Redshift,503,65
+Amazon Aurora,256,25
+Amazon RDS,533,56
+Amazon DynamoDB,411,39
+Google Cloud BigQuery,754,113
+Google Cloud SQL,488,81
+Google Cloud Firestore,315,37
+Google Cloud BigTable,299,41
+Google Cloud Spanner,171,21
+Amazon QuickSight,205,33
+Microsoft Power BI,2042,320
+Google Data Studio,782,117
+Looker,165,29
+Tableau,2106,416
+Salesforce,311,66
+Tableau CRM,314,57
+Qlik,370,52
+Domo,67,9
+TIBCO Spotfire,89,17
+Sisense,71,8
+SAP Analytics Cloud,191,30
+Microsoft Azure Synapse,240,35
+Thoughtspot,41,8
+"Automated data augmentation (e.g. imgaug, albumentations)",883,104
+"Automated feature engineering/selection (e.g. tpot, boruta_py)",699,68
+"sklearn, xcessiv)",1014,144
+"Automated model architecture searches (e.g. darts, enas)",300,35
+"Automated hyperparameter tuning (e.g. hyperopt, ray.tune, Vizier)",857,75
+"Automation of full ML pipelines (e.g. Google AutoML, H2O Driverless AI)",760,105
+Google Cloud AutoML,645,89
+H2O Driverless AI,270,33
+Databricks AutoML,275,35
+DataRobot AutoML,230,32
+Amazon Sagemaker Autopilot,328,40
+Azure Automated Machine Learning,392,47
+Neptune.ai,186,25
+Weights & Biases,479,46
+Comet.ml,92,12
+Sacred + Omniboard,85,12
+TensorBoard,1537,149
+Guild.ai,94,20
+Polyaxon,90,17
+ClearML,148,25
+Domino Model Monitor,73,16
+MLflow,931,109
