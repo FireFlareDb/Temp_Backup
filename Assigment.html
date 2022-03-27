@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Assigment.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<pre class="hljs"><code><div><span class="hljs-keyword">import</span> java.util.Arrays;
+<span class="hljs-keyword">import</span> java.util.Scanner;
+<span class="hljs-keyword">import</span> java.util.Collections;
+</div></code></pre>
+<p>Write a JAVA program, which reads as input sides of a rectangle and prints its area.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">findrectarea</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> h = sc.nextInt();
+	<span class="hljs-keyword">int</span> w = sc.nextInt();
+	System.out.print(h * w);
+}
+</div></code></pre>
+<p>Write a JAVA program, which reads 2 numbers and prints the sum of square of the first and cube of the second. e.g. input 5 3 output 5^2 +3^3 =52.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">twosum</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	
+	<span class="hljs-keyword">int</span> a = sc.nextInt();
+	<span class="hljs-keyword">int</span> b = sc.nextInt();
+	System.out.print(a * a + b * b * b);
+}
+</div></code></pre>
+<p>Write a JAVA program, which reads 4 numbers a, b, c and p. Let f(x)=ax2+bx+c be a Method. The program outputs the value of f(p). e.g. input 4 3 –1 2 output 4(2) 2 +3(2)-1= 21.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">abcx</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	
+	<span class="hljs-keyword">int</span> a = sc.nextInt();
+	<span class="hljs-keyword">int</span> b = sc.nextInt();
+	<span class="hljs-keyword">int</span> c = sc.nextInt();
+	<span class="hljs-keyword">int</span> x = sc.nextInt();
+	System.out.print(a * (x * x) + b * x + c);
+}
+</div></code></pre>
+<p>Write a JAVA program to delete last two digits. input 13613 output 136. input 324 output 4.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lasttwo</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">13616</span>;
+	String ns = Integer.toString(n);
+	System.out.print(ns.substring(<span class="hljs-number">0</span>, ns.length() - <span class="hljs-number">2</span>));
+}
+</div></code></pre>
+<p>Write JAVA program to exchange last and third last digit. e.g. input 23617 output 23716.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">revthree</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">13616123</span>;
+	String ns = Integer.toString(n);
+	
+	String partone = ns.substring(<span class="hljs-number">0</span>, ns.length() - <span class="hljs-number">3</span>);
+	String revs = ns.substring(ns.length() - <span class="hljs-number">3</span>);
+	
+	StringBuilder str = <span class="hljs-keyword">new</span> StringBuilder(revs);
+	System.out.print(partone + str.reverse().toString());
+}
+
+</div></code></pre>
+<p>Write JAVA program to double the second last digit. e.g. input 23613 output 23623. input 324 output 344. (assume that second last digit is less than 5)</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">doubleup</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">13616123</span>;
+	String ns = Integer.toString(n);
+	String slice = ns.substring(ns.length() - <span class="hljs-number">2</span>);
+	String slicepartone = slice.substring(<span class="hljs-number">0</span>, slice.length() - <span class="hljs-number">1</span>);
+	String slicepartwo = slice.substring(slice.length() - <span class="hljs-number">1</span>);
+	
+	<span class="hljs-keyword">int</span> readydoubleup = Integer.parseInt(slicepartone);
+	<span class="hljs-keyword">int</span> doubleup = readydoubleup + readydoubleup;
+	System.out.print(ns.substring(<span class="hljs-number">0</span>, ns.length() - <span class="hljs-number">2</span>) + doubleup + slicepartwo);
+}
+</div></code></pre>
+<p>Read two numbers. Find their product after exchanging last digits. Input 4270 and 153 output 640950 (4273x150). Input 348 and 31 output 12958 (341*38).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">kuchbhi</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> a = <span class="hljs-number">348</span>;
+	<span class="hljs-keyword">int</span> b = <span class="hljs-number">31</span>;
+	String as = Integer.toString(a);
+	String bs = Integer.toString(b);
+	
+	String a_slice = as.substring(as.length() - <span class="hljs-number">1</span>);
+	String b_slice = bs.substring(bs.length() - <span class="hljs-number">1</span>);
+	
+	String apartone = as.substring(<span class="hljs-number">0</span>, as.length() - <span class="hljs-number">1</span>);
+	String bpartone = bs.substring(<span class="hljs-number">0</span>, bs.length() - <span class="hljs-number">1</span>);
+	
+	<span class="hljs-keyword">int</span> newa = Integer.parseInt(apartone + b_slice);
+	<span class="hljs-keyword">int</span> newb = Integer.parseInt(bpartone + a_slice);
+	
+	System.out.print(newb * newa);
+}
+</div></code></pre>
+<hr>
+<p>Write a program, which prints all even numbers between 20 and 70.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">evenme</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">20</span>; i &lt;= <span class="hljs-number">70</span>; i++) {
+	    <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<p>Write a JAVA program, which prints all even numbers between 20 and 40, and all odd numbers between 50 and 80.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">evenodd</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">20</span>; i &lt;= <span class="hljs-number">40</span>; i++) {
+	    <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+	System.out.print(<span class="hljs-string">"\n\n"</span>);
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">50</span>; i &lt;= <span class="hljs-number">80</span>; i++) {
+	    <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<p>Write a JAVA program, which will print those numbers whose last digit is multiple of 3. e.g. 0, 3, 6, 9, 10, 13, 16, 19, 20, 23, …..</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">threetable</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">30</span>; i++) {
+	    String ns = Integer.toString(i);
+	    <span class="hljs-keyword">int</span> slice = Integer.parseInt(ns.substring(ns.length() - <span class="hljs-number">1</span>));
+	    <span class="hljs-keyword">if</span> (slice % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<p>Write JAVA program, which will print those numbers whose last digit is between 5 and 8. e.g. 5, 6, 7, 8, 15, 16, 17, 18, 25, 26, …</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">eigntandfive</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= <span class="hljs-number">30</span>; i++) {
+	    String ns = Integer.toString(i);
+	    <span class="hljs-keyword">int</span> slice = Integer.parseInt(ns.substring(ns.length() - <span class="hljs-number">1</span>));
+	    <span class="hljs-keyword">if</span> (slice &gt;= <span class="hljs-number">5</span> &amp;&amp; slice &lt;= <span class="hljs-number">8</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<p>Write JAVA program, which will print those numbers whose sum of both digits is multiple of 7. e.g. 0,7,16, 25, 34, 43, 52, 59, 61, …..</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">mulseven</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> n = <span class="hljs-number">0</span>; n &lt; <span class="hljs-number">123</span>; n++) {
+	    String ns = Integer.toString(n);
+	    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; ns.length(); i++) {
+	        sum += ns.charAt(i) - <span class="hljs-string">'0'</span>;
+	    }
+	    <span class="hljs-keyword">if</span> (sum % <span class="hljs-number">7</span> == <span class="hljs-number">0</span>) {
+	        System.out.print(n + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<p>Write JAVA program, which will print all numbers between 10 and 19, 30 and 39, 50 and 59, … , 90 and 99. [Hint: check condition ((x/10)%2) == 1]</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">goodcheck</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
+	    <span class="hljs-keyword">if</span> ((i / <span class="hljs-number">10</span>) % <span class="hljs-number">2</span> == <span class="hljs-number">1</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<p>Write JAVA program, which will print those numbers whose first digit leaves remainder 1 when divided by 3. e.g. 10, 11, ..., 19,40, 41, …, 49, 70, 71, ..., 79.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">selfgoodcheckuse</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
+	    String ns = Integer.toString(i);
+	    <span class="hljs-keyword">int</span> slice = Integer.parseInt(ns.substring(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>));
+	    <span class="hljs-keyword">if</span> ((slice % <span class="hljs-number">3</span>) == <span class="hljs-number">1</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<p>Write JAVA program, which will print all odd numbers between 0 and 9, 20 and 29, 40 and 49, … , 80 and 89 and all even numbers between 10 and 19, 30 and 39, … , 90 and 99.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">ifoddeven</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
+	    <span class="hljs-keyword">if</span> ((i / <span class="hljs-number">10</span>) % <span class="hljs-number">2</span> == <span class="hljs-number">0</span> &amp;&amp; i % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+	System.out.print(<span class="hljs-string">"\n\n"</span>);
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++) {
+	    <span class="hljs-keyword">if</span> ((i / <span class="hljs-number">10</span>) % <span class="hljs-number">2</span> == <span class="hljs-number">1</span> &amp;&amp; i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+	        System.out.print(i + <span class="hljs-string">"\n"</span>);
+	    }
+	}
+}
+</div></code></pre>
+<hr>
+<p>Write a JAVA program which reads n numbers and finds their sum e.g if n is 5 and given numbers are 33, 100, 77, 42 and 12 then output is 33+100+77+42+12=264.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">findn</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    sum += sc.nextInt();
+	}
+	System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<p>Write a JAVA program, which finds the sum of last digits (in above case 3+0+7+2+2=14).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">abovecase</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> last = sc.nextInt() % <span class="hljs-number">10</span>;
+	    sum += last;
+	}
+	
+	System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<p>Write a JAVA program, which finds the sum of second last digits (3+0+7+4+1=15).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">lastmid</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    String ns = sc.next();
+	    String slice = ns.substring(ns.length() - <span class="hljs-number">2</span>);
+	    String lastsecond = slice.substring(<span class="hljs-number">0</span>, slice.length() - <span class="hljs-number">1</span>);
+	    <span class="hljs-keyword">int</span> readydoubleup = Integer.parseInt(lastsecond);
+	    sum += readydoubleup;
+	}
+System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<p>Write a JAVA program to find the sum of numbers after deleting second last digit. (3+10+7+2+2=24)</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">leftmidsum</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    String ns = sc.next();
+	    String start = ns.substring(<span class="hljs-number">0</span>, ns.length() - <span class="hljs-number">2</span>);
+	    String slice = ns.substring(ns.length() - <span class="hljs-number">2</span>);
+	    String last = slice.substring(slice.length() - <span class="hljs-number">1</span>);
+	    <span class="hljs-keyword">int</span> readydoubleup = Integer.parseInt(start + last);
+	    sum += readydoubleup;
+	}
+	System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<p>Write JAVA program, which finds the weighted sum of even numbers. The weight of i th even number is i (in above case 1x100 + 2x42 + 3x12 = 220).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">weightedsum</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> counter = <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> num = sc.nextInt();
+	    <span class="hljs-keyword">if</span> (num % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+	        sum += num * counter;
+	        counter++;
+	    }
+	}
+	System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<p>Write JAVA program, which finds sum of the product of two consecutive numbers
+(in above case 33x100 + 100x77 + 77x42 + 42x12=14738).</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">cujesum</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> a = sc.nextInt();
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> index = <span class="hljs-number">0</span>; index &lt; n - <span class="hljs-number">1</span>; index++) {
+	    <span class="hljs-keyword">int</span> b = sc.nextInt();
+	    <span class="hljs-keyword">int</span> multiplier = a * b;
+	    sum += multiplier;
+	    a = b;
+	}
+	System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<p>Write JAVA program, which finds the sum of all numbers from first even number onwards. If n=14 and given numbers are 3, 7, 4, 3, 2, 12, 11, 9, 1, 6, 8, 7, 10 and 17 then the answer is 4+3+2+12+11+9+1+6+8+7+10+17 = 90).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onwards</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">boolean</span> flag = <span class="hljs-keyword">false</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> num = sc.nextInt();
+	    <span class="hljs-keyword">if</span> (num % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) {
+	        flag = <span class="hljs-keyword">true</span>;
+	    }
+	    <span class="hljs-keyword">if</span> (flag) {
+	        sum += num;
+	    }
+	}
+	System.out.println(sum);
+}
+</div></code></pre>
+<p>Write JAVA program, which finds the sum of numbers formed by consecutive digits. Input 2415 output 24+41+15=80.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sumcon</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">2415</span>;
+	<span class="hljs-keyword">int</span> ia = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> ib = <span class="hljs-number">2</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	String ns = Integer.toString(n);
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; ns.length(); i++) {
+	    <span class="hljs-keyword">if</span> (ib &gt; ns.length()) {
+	        <span class="hljs-keyword">break</span>;
+	    }
+	    String slice = ns.substring(ia, ib);
+	    sum += Integer.parseInt(slice);
+	    ia++;
+	    ib++;
+	}
+	System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<p>Find sum of numbers formed by exchanging consecutive digits. In above 42+14+51=107.</p>
+<pre class="hljs"><code><div>
+
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">revsumcon</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">2415</span>;
+	<span class="hljs-keyword">int</span> ia = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> ib = <span class="hljs-number">2</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	String ns = Integer.toString(n);
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; ns.length(); i++) {
+	    <span class="hljs-keyword">if</span> (ib &gt; ns.length()) {
+	        <span class="hljs-keyword">break</span>;
+	    }
+	    String slice = ns.substring(ia, ib);
+	    StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(slice);
+	    slice = sb.reverse().toString();
+	    sum += Integer.parseInt(slice);
+	    ia++;
+	    ib++;
+	}
+	System.out.print(<span class="hljs-string">"\n"</span> + sum);
+}
+</div></code></pre>
+<hr>
+<p>Write a JAVA programs read n and n numbers and find their maximum e.g if n=5 and given numbers are 32, 100, 77, 83 and 12 then output is 100</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">arrloop</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> arr[] = <span class="hljs-keyword">new</span> <span class="hljs-keyword">int</span>[n];
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    arr[i] = sc.nextInt();
+	}
+	
+	<span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; arr.length; j++) {
+	    <span class="hljs-keyword">if</span> (arr[j] &gt; max) {
+	        max = arr[j];
+	    }
+	}
+	System.out.print(max);
+}
+</div></code></pre>
+<p>Write a JAVA program to find the sum of all numbers except the maximum number. Assume that the maximum number is present only once. Do not use subtraction.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">advloop</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	Integer[] arr = <span class="hljs-keyword">new</span> Integer[n];
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    arr[i] = sc.nextInt();
+	}
+	
+	Arrays.sort(arr, Collections.reverseOrder());
+	
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt; arr.length; i++) {
+	    sum += arr[i];
+	}
+	
+	System.out.print(sum);
+}
+</div></code></pre>
+<p>Write a JAVA program, which finds the number with maximum sum of digits. e.g.
+if numbers are 325, 199, 800 then answer is 199.</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">digsum</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">3</span>;
+	String[] arr = <span class="hljs-keyword">new</span> String[n];
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    arr[i] = sc.next();
+	}
+	
+	<span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> sum_bk = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">for</span> (String string : arr) {
+	    <span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; string.length(); i++) {
+	        <span class="hljs-keyword">int</span> digit = string.charAt(i) - <span class="hljs-string">'0'</span>;
+	        sum = sum + digit;
+	    }
+	    <span class="hljs-keyword">if</span> (sum &gt; sum_bk) {
+	        max = Integer.parseInt(string);
+	    }
+	    sum_bk = sum;
+	}
+	System.out.print(<span class="hljs-string">"\n\nMax:"</span> + max);
+}
+</div></code></pre>
+<p>Write a JAVA program, which reads a number and deletes the maximum digit. Assume that all digits in the number are distinct. e.g. input 237436 output 23436.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">maxdel</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> num = <span class="hljs-number">23748836</span>;
+	String string = Integer.toString(num);
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; string.length(); i++) {
+	    <span class="hljs-keyword">int</span> digit = string.charAt(i) - <span class="hljs-string">'0'</span>;
+	    <span class="hljs-keyword">if</span> (digit &gt; max) { max = digit; }
+	}
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; string.length(); i++) {
+	    <span class="hljs-keyword">if</span> (string.charAt(i) - <span class="hljs-string">'0'</span> != max) {
+	        System.out.print(string.charAt(i));
+	    }
+	}
+}
+</div></code></pre>
+<p>Do above problem when the maximum digit can be present many times. e.g. input 137828381 output 137231.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">maxdel</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> num = <span class="hljs-number">23748836</span>;
+	String string = Integer.toString(num);
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; string.length(); i++) {
+	    <span class="hljs-keyword">int</span> digit = string.charAt(i) - <span class="hljs-string">'0'</span>;
+	    <span class="hljs-keyword">if</span> (digit &gt; max) { max = digit; }
+	}
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; string.length(); i++) {
+	    <span class="hljs-keyword">if</span> (string.charAt(i) - <span class="hljs-string">'0'</span> != max) {
+	        System.out.print(string.charAt(i));
+	    }
+	}
+}
+</div></code></pre>
+<hr>
+<p>Write a JAVA program, which find the sum of first digits e.g. if n=5 and given numbers are 33, 100, 77, 42 and 12 then output is 3+1+7+4+1=16. [First digit]</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fstsum</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> num = sc.nextInt();
+	    String strnum = Integer.toString(num);
+	    sum += strnum.charAt(<span class="hljs-number">0</span>) - <span class="hljs-string">'0'</span>;
+	}
+	System.out.print(sum);
+}
+</div></code></pre>
+<p>Write a JAVA program, which finds sum of those numbers whose first digit is 1. (in above case 100+12=112) [First digit]</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">fstone</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+	<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> num = sc.nextInt();
+	    <span class="hljs-keyword">char</span> charnum = Integer.toString(num).charAt(<span class="hljs-number">0</span>);
+	    <span class="hljs-keyword">if</span> (charnum == <span class="hljs-string">'1'</span>) {
+	        sum += num;
+	    }
+	}
+	System.out.print(sum);
+}
+</div></code></pre>
+<p>Write a JAVA program, which finds the sum of numbers after reversing. (in above case 33+001+77+24+21=156). [reverse]</p>
+<pre class="hljs"><code><div>    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">revnumsum</span><span class="hljs-params">()</span> </span>{
+Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+<span class="hljs-keyword">int</span> n = <span class="hljs-number">5</span>;
+<span class="hljs-keyword">int</span> sum = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+    <span class="hljs-keyword">int</span> num = sc.nextInt();
+    String strnum = Integer.toString(num);
+    StringBuilder sb = <span class="hljs-keyword">new</span> StringBuilder(strnum);
+    String isb = sb.reverse().toString();
+    sum += Integer.parseInt(isb);
+}
+System.out.print(sum);
+}
+</div></code></pre>
+<p>Write JAVA program, which reads n and n numbers and finds how many of them are prime. e.g. if n=6 and given numbers are 7, 13, 16, 27, 11 and 9 then answer is 3 since the prime numbers are 7, 13 and 11. (Hint: Smallest factor of a prime number is equal to itself). [Smallest factor]</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">prime</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">6</span>;
+	<span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> totle = <span class="hljs-number">0</span>;
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> num = sc.nextInt();
+	    
+	    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= num; j++) {
+	        <span class="hljs-keyword">if</span> (num % j == <span class="hljs-number">0</span>) { counter++; }
+	    }
+	    
+	    <span class="hljs-keyword">if</span> (counter == <span class="hljs-number">1</span>) {
+	        totle++;
+	    }
+	
+	    counter = <span class="hljs-number">0</span>;
+	}
+	System.out.print(totle);
+}
+</div></code></pre>
+<p>Write JAVA program, which finds the sum of prime numbers. (In above case 7+13+11 = 31).</p>
+<pre class="hljs"><code><div><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">sumprime</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">6</span>;
+	<span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> totle = <span class="hljs-number">0</span>;
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> num = sc.nextInt();
+	    
+	    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= num; j++) {
+	        <span class="hljs-keyword">if</span> (num % j == <span class="hljs-number">0</span>) { counter++; }
+	    }
+	    
+	    <span class="hljs-keyword">if</span> (counter == <span class="hljs-number">1</span>) {
+	        totle += num;
+	    }
+	
+	    counter = <span class="hljs-number">0</span>;
+	}
+	System.out.print(totle);
+}
+</div></code></pre>
+<p>Write JAVA program, which finds the biggest prime (in above case 13).</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">bigprime</span><span class="hljs-params">()</span> </span>{
+	Scanner sc = <span class="hljs-keyword">new</span> Scanner(System.in);
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">3</span>;
+	<span class="hljs-keyword">int</span> counter = <span class="hljs-number">0</span>;
+	<span class="hljs-keyword">int</span> max = <span class="hljs-number">0</span>;
+	
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+	    <span class="hljs-keyword">int</span> num = sc.nextInt();
+	    
+	    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> j = <span class="hljs-number">2</span>; j &lt;= num; j++) {
+	        <span class="hljs-keyword">if</span> (num % j == <span class="hljs-number">0</span>) { counter++; }
+	    }
+	    
+	    <span class="hljs-keyword">if</span> (counter == <span class="hljs-number">1</span>) {
+	        <span class="hljs-keyword">if</span> (num &gt; max) { max = num; }
+	    }
+	
+	    counter = <span class="hljs-number">0</span>;
+	}
+	System.out.print(max);
+}
+</div></code></pre>
+<p>Write JAVA program, which reads a number and finds first digit of its factorial. Input 6 output 7 (since 6!=720). [First digit and factorial].</p>
+<pre class="hljs"><code><div>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">thisisfact</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> n = <span class="hljs-number">10</span>;
+	<span class="hljs-keyword">int</span> fact = <span class="hljs-number">1</span>;
+	<span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {
+	    fact *= i;
+	}
+	
+	<span class="hljs-keyword">char</span> fstdig = Integer.toString(fact).charAt(<span class="hljs-number">0</span>);
+	System.out.print(fstdig);
+}    
+</div></code></pre>
+
+</body>
+</html>
